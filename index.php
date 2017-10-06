@@ -2,7 +2,14 @@
 require 'vendor/autoload.php';
 $app = new \atk4\ui\App('Registration');
 $app->initLayout('Centered');
-$button = $app->add(['Label','cat']);
+$label = $app->add(['Label','cat']);
+$text = $app->add(['text','cat']);
+$message = $app->add(['message','cat']);
+$button = $app->add(['button','cat']);
+$img = 'http://www.catster.com/wp-content/uploads/2017/08/A-brown-cat-licking-its-lips.jpg';
+$icon = $app->add(['Image', $img, 'disabled']);
+$button = $app->add(['Label', 'cat', 'image'=>$img]);
+$button->set(['massive'=>true]);
 /*Class Cat {
 public $age;
 public $pol;
