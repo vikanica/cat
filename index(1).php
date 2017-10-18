@@ -10,6 +10,10 @@ $img = 'http://www.catster.com/wp-content/uploads/2017/08/A-brown-cat-licking-it
 $icon = $app->add(['Image', $img, 'disabled']);
 $button = $app->add(['Label', 'cat', 'image'=>$img]);
 $button->set(['massive'=>true]);
+$button = $app->layout->add(['Button','link']);
+$button->link(['index']);
+$b = $_GET['phone'];
+$view = $app->layout->add(['View',$b]);
 /*Class Cat {
 public $age;
 public $pol;
