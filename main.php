@@ -6,9 +6,15 @@ use \atk4\ui\Header;
 
 $app = new \atk4\ui\App('Добро пожаловать в игру!');
 $app->initLayout('Centered');
-
-    $max = $_GET['max'];
-    $min = $_GET['min'];
+$max = $_GET['max'];
+$min = $_GET['min'];
+    if(isset($_GET['marker'])) {
+      if($min==$max) {
+        $label=$app->add(['Label','Ошибка','big red']);
+        $button = $app->layout->add(['Button', 'Сыграть ещё раз.','icon'=>'refresh']);
+        $button->link(['index']);
+      }
+    }else{
 
     $number = round(($max+$min)/2);
 
@@ -19,10 +25,11 @@ $app->initLayout('Centered');
     $button->link(['win','number'=>$number]);
 
     $button = $app->layout->add(['Button', 'Нет, моё число меньше.','icon'=>'arrow down']);
-    $button->link(['main','max'=>$number,'min'=>$min]);
+    $button->link(['main','max'=>$number,'min'=>$min,'marker'=>true]);
 
     $button = $app->layout->add(['Button', 'Нет, моё число больше.','icon'=>'arrow up']);
-    $button->link(['main','max'=>$max,'min'=>$number]);
+    $button->link(['main','max'=>$max,'min'=>$number,'marker'=>true]);
 
     $button = $app->layout->add(['Button', 'Сыграть ещё раз.','icon'=>'refresh']);
     $button->link(['index']);
+  }
