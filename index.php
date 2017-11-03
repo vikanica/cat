@@ -1,24 +1,17 @@
 <?php
-echo "O privet";
 require 'vendor/autoload.php';
-$app = new \atk4\ui\App("Добро пожаловать");
-$app->initLayout("Centered");
-/*
-$button = $app->add('Button');
-$button->set('Add invoice');
-$button->icon = 'plus';
-$button->link('https://www.youtube.com/');
 
-$button = $app->add('Button');
-$button->set('Add invoice');
-$button->icon = 'plus';
-$button->link('https://www.facebook.com/');
+use \atk4\ui\Header;
 
-$button = $app->add('Button');
-$button->set('Add invoice');
-$button->icon = 'plus';
-$button->link('https://www.e-klase.lv/lv/');
-*/
-$button= $app->add(['Button','Ilja']);
-$button->link('index2.php');
-$button->addClass('Massive Blue');
+$app = new \atk4\ui\App('Добро пожаловать в игру!');
+$app->initLayout('Centered');
+
+$app->add(['Header', 'Инструкция']);
+
+$text = $app->add(['Text']);
+$text->addParagraph('Эта игра демонстрирует, как использовать Links, Buttons, Headers, Text в Agile Toolkit.');
+$text->addParagraph("Для игры Вам необходимо загадать любое целое число от 1 до 100 включительно. После того, как Вы загадали число, нажмите кнопку 'Начать игру!' ");
+
+$button = $app->layout->add(['Button', "Начать игру!",'iconRight'=>'smile']);
+$button->link(['main','max'=>100,'min'=>0]);
+$button->addClass('teal inverted');
